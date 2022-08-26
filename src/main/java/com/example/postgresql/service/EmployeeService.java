@@ -1,42 +1,40 @@
 package com.example.postgresql.service;
 
-import com.example.postgresql.dao.ProductRepository;
+import com.example.postgresql.dao.EmployeeRepository;
 import com.example.postgresql.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 public class EmployeeService {
 
-    private ProductRepository productRepository;
+    private EmployeeRepository employeeRepository;
 
     @Autowired
-    public EmployeeService(ProductRepository repo) {
-        productRepository = repo;
+    public EmployeeService(EmployeeRepository repo) {
+        employeeRepository = repo;
     }
 
     public List<Employee> getAllEmployee() {
-        return productRepository.findAll();
+        return employeeRepository.findAll();
     }
 
     public Optional<Employee> getEmployeeById(Long id) {
-        return productRepository.findById(id);
+        return employeeRepository.findById(id);
     }
 
     public Employee addEmployee(Employee employee) {
-        return productRepository.save(employee);
+        return employeeRepository.save(employee);
     }
 
     public Employee updateEmployee(Employee employee) {
-        return productRepository.save(employee);
+        return employeeRepository.save(employee);
     }
 
     public void deleteEmployee(Long id) {
-        productRepository.deleteById(id);
+        employeeRepository.deleteById(id);
     }
 }
